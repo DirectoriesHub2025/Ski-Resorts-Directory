@@ -1,0 +1,178 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import listingsData from '../../data/listings.json';
+
+// Filter listings for this specific city
+const cityName = 'Keystone';
+const cityListings = listingsData.filter(listing => 
+  listing.city === cityName || 
+  listing.address?.includes(cityName)
+);
+
+// Get city info
+const cityInfo = {
+  name: 'Keystone',
+  state: 'CO',
+  description: 'Business directory for Keystone, CO',
+  listingCount: 2
+};
+---
+
+<MainLayout title="{cityInfo.name} Listings">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">{cityInfo.name}, {cityInfo.state}</h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-4">{cityInfo.description}</p>
+        <div class="inline-flex items-center px-6 py-3 bg-white bg-opacity-20 rounded-full">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+          </svg>
+          {cityInfo.listingCount} business listings
+        </div>
+      </div>
+    </div>
+
+    <!-- Listings Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Breadcrumb -->
+      <div class="mb-8">
+        <nav class="flex" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-teal-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-1a1 1 0 011-1h2a1 1 0 011 1v1a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                </svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <a href="/cities" class="ml-1 text-sm font-medium text-gray-700 hover:text-teal-600 md:ml-2">Cities</a>
+              </div>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">{cityInfo.name}</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Listings Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {cityListings.map((listing) => (
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="p-6">
+              <!-- Listing Image -->
+              {listing.main_image ? (
+                <div class="w-full h-48 rounded-lg mb-4 overflow-hidden">
+                  <img 
+                    src={listing.main_image} 
+                    alt={listing.name || 'Business Image'} 
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+                  <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                </div>
+              )}
+              
+              <!-- Listing Information -->
+              <div class="mb-4">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">{listing.name}</h3>
+                <p class="text-gray-600 text-sm mb-2">{listing.city}, {listing.state}</p>
+                <p class="text-gray-700 mb-3">{listing.description}</p>
+                
+                <!-- Category Badge -->
+                {listing.category && (
+                  <span class="inline-block px-3 py-1 bg-teal-100 text-teal-800 text-xs rounded-full mb-3">
+                    {listing.category}
+                  </span>
+                )}
+              </div>
+              
+              <!-- Contact Information -->
+              <div class="space-y-2 mb-4">
+                {listing.phone && (
+                  <div class="flex items-center text-sm text-gray-600">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    {listing.phone}
+                  </div>
+                )}
+                {listing.address && (
+                  <div class="flex items-center text-sm text-gray-600">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="truncate">{listing.address}</span>
+                  </div>
+                )}
+              </div>
+              
+              <!-- Action Button -->
+              <button 
+                data-listing-id={listing.id}
+                class="listing-button w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- No Listings Message -->
+      {cityListings.length === 0 && (
+        <div class="text-center py-16">
+          <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33"></path>
+          </svg>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">No listings found</h3>
+          <p class="text-gray-600">We couldn't find any business listings for {cityInfo.name} at the moment.</p>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <script>
+    function goToCity(cityName) {
+      if (cityName) {
+        const citySlug = cityName.toLowerCase().replace(/\s+/g, '-');
+        window.location.href = '/cities/' + citySlug;
+      }
+    }
+    
+    // Make function available globally
+    window.goToCity = goToCity;
+    
+    // Add event listeners for listing buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const listingButtons = document.querySelectorAll('.listing-button');
+      listingButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const listingId = this.getAttribute('data-listing-id');
+          if (listingId) {
+            window.location.href = '/listing/' + listingId;
+          }
+        });
+      });
+    });
+  </script>
+</MainLayout>

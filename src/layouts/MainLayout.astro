@@ -1,0 +1,87 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Business Directory' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - All Colorado Ski Resorts</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="All Colorado Ski Resorts, Colorado ski resorts, ski directory, Colorado skiing, ski resorts directory" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="skiresortsco.com" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header with Logo and Navigation -->
+    <header class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-4">
+          <!-- Logo and Directory Name -->
+          <div class="flex items-center space-x-4 cursor-pointer" onclick="window.location.href='/'">
+            <img src="/logo.png" alt="Logo" class="h-12 w-12 rounded-lg shadow-md" />
+            <div>
+              <h1 class="text-2xl font-bold text-gray-900">All Colorado Ski Resorts</h1>
+              <p class="text-sm text-gray-600">Find your perfect Colorado ski adventure.  Compare resorts, read reviews, and plan your trip today!</p>
+            </div>
+          </div>
+          
+          <!-- Main Menu Items -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a href="/" class="text-gray-700 hover:text-teal-600 transition-colors font-medium">Home</a>
+            <a href="/listings" class="text-gray-700 hover:text-teal-600 transition-colors font-medium">All Listings</a>
+            <a href="/cities" class="text-gray-700 hover:text-teal-600 transition-colors font-medium">Cities</a>
+            <a href="/blog" class="text-gray-700 hover:text-teal-600 transition-colors font-medium">Blog</a>
+            <a href="/about" class="text-gray-700 hover:text-teal-600 transition-colors font-medium">About</a>
+          </nav>
+          
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden p-2 rounded-md text-gray-700 hover:text-teal-600 hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen">
+      <slot />
+    </main>
+
+    <!-- Footer with Horizontal Navigation -->
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex flex-wrap justify-center items-center space-x-8 text-sm">
+          <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="/about" class="text-gray-300 hover:text-white transition-colors">About Us</a>
+          <a href="/privacy-policy" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
+          <a href="/disclaimer" class="text-gray-300 hover:text-white transition-colors">Disclaimer</a>
+          <a href="/terms-of-service" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

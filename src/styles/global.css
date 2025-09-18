@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: teal;
+  --secondary-color: #6B7280;
+  --accent-color: teal;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Modern Design System */
+.btn-primary {
+  background-color: var(--primary-color);
+  @apply text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  filter: brightness(0.9);
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+/* Consistent Spacing */
+.section-padding {
+  @apply py-16;
+}
+
+.container-width {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Consistent Shadows */
+.shadow-modern {
+  @apply shadow-lg;
+}
+
+.shadow-modern-hover {
+  @apply hover:shadow-xl;
+}
+
+/* Consistent Border Radius */
+.rounded-modern {
+  @apply rounded-xl;
+}
+
+/* Consistent Transitions */
+.transition-modern {
+  @apply transition-all duration-300;
+}
+
+/* Consistent Hover Effects */
+.hover-lift {
+  @apply transform hover:-translate-y-1;
+}
+
+.hover-scale {
+  @apply transform hover:scale-105;
+}
+
+/* Consistent Button Styles */
+.btn-modern {
+  @apply font-medium py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105;
+}
+
+.btn-modern-primary {
+  background-color: var(--primary-color);
+  @apply text-white;
+}
+
+.btn-modern-primary:hover {
+  background-color: var(--primary-color);
+  filter: brightness(0.9);
+}
+
+.btn-modern-secondary {
+  @apply bg-white border border-gray-300 text-gray-700 hover:bg-gray-50;
+}
+
+/* Consistent Form Styles */
+.input-modern {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-4 focus:ring-blue-300 focus:border-transparent transition-all duration-200;
+}
+
+/* Consistent Card Styles */
+.card-modern {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6;
+}
+
+/* Consistent Icon Styles */
+.icon-modern {
+  @apply w-6 h-6;
+}
+
+.icon-modern-large {
+  @apply w-8 h-8;
+}
+
+/* Consistent Text Styles */
+.text-modern-heading {
+  @apply text-3xl md:text-4xl font-bold text-gray-900;
+}
+
+.text-modern-subheading {
+  @apply text-xl text-gray-600;
+}
+
+.text-modern-body {
+  @apply text-gray-700 leading-relaxed;
+}
+
+/* FAQ Accordion styles */
+.hidden {
+  display: none !important;
+}
+
+.faq-content {
+  transition: all 0.3s ease-in-out;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.faq-button:hover {
+  background-color: rgba(249, 250, 251, 1);
+}

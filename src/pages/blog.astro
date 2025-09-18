@@ -1,0 +1,138 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import blogData from '../data/blog.json';
+
+// Sort posts by date (newest first)
+const sortedPosts = blogData.sort((a, b) => new Date(b.date) - new Date(a.date));
+const featuredPosts = sortedPosts.filter(post => post.featured);
+const regularPosts = sortedPosts.filter(post => !post.featured);
+---
+
+<MainLayout title="Ski Resort Blog - All Colorado Ski Resorts">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Ski Resort Blog</h1>
+        <p class="text-xl md:text-2xl opacity-90">Tips, guides, and insights for your Colorado ski adventure</p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Featured Posts -->
+      {featuredPosts.length > 0 && (
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Articles</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredPosts.map((post) => (
+              <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                  <div class="flex items-center mb-3">
+                    <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">
+                      {post.category}
+                    </span>
+                    <span class="text-gray-500 text-sm ml-3">{post.readTime}</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-teal-600 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p class="text-gray-600 mb-4">{post.excerpt}</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                        <span class="text-teal-600 font-semibold text-sm">
+                          {post.author.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                      <div>
+                        <p class="text-sm font-medium text-gray-900">{post.author}</p>
+                        <p class="text-sm text-gray-500">{new Date(post.date).toLocaleDateString()}</p>
+                      </div>
+                    </div>
+                    <a 
+                      href={`/blog/${post.id}`}
+                      class="text-teal-600 hover:text-teal-700 font-medium text-sm"
+                    >
+                      Read More →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- All Posts -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">All Articles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {regularPosts.map((post) => (
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex items-center mb-3">
+                  <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">
+                    {post.category}
+                  </span>
+                  <span class="text-gray-500 text-sm ml-3">{post.readTime}</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3 hover:text-teal-600 transition-colors">
+                  {post.title}
+                </h3>
+                <p class="text-gray-600 mb-4 text-sm">{post.excerpt}</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                      <span class="text-teal-600 font-semibold text-sm">
+                        {post.author.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium text-gray-900">{post.author}</p>
+                      <p class="text-sm text-gray-500">{new Date(post.date).toLocaleDateString()}</p>
+                    </div>
+                  </div>
+                  <a 
+                    href={`/blog/${post.id}`}
+                    class="text-teal-600 hover:text-teal-700 font-medium text-sm"
+                  >
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Newsletter Signup -->
+      <section class="mt-16 bg-gradient-to-r from-teal-600 to-teal-700 rounded-xl p-8 text-white text-center">
+        <h3 class="text-2xl font-bold mb-4">Stay Updated</h3>
+        <p class="text-lg mb-6 opacity-90">
+          Get the latest ski resort news, conditions, and tips delivered to your inbox
+        </p>
+        <div class="max-w-md mx-auto flex gap-4">
+          <input 
+            type="email" 
+            placeholder="Enter your email"
+            class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+          />
+          <button class="bg-white text-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</MainLayout>

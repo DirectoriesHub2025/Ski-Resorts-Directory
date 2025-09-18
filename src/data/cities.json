@@ -1,0 +1,257 @@
+[
+  {
+    "name": "Telluride",
+    "state": "CO",
+    "description": "Business directory for Telluride, CO",
+    "listingCount": 2,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Winter Park",
+    "state": "CO",
+    "description": "Business directory for Winter Park, CO",
+    "listingCount": 3,
+    "categories": [
+      "SkiResort"
+    ]
+  },
+  {
+    "name": "Mesa",
+    "state": "CO",
+    "description": "Business directory for Mesa, CO",
+    "listingCount": 1,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Vail",
+    "state": "CO",
+    "description": "Business directory for Vail, CO",
+    "listingCount": 2,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Breckenridge",
+    "state": "CO",
+    "description": "Business directory for Breckenridge, CO",
+    "listingCount": 2,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Aspen",
+    "state": "CO",
+    "description": "Business directory for Aspen, CO",
+    "listingCount": 4,
+    "categories": [
+      "Ski Resort",
+      "website"
+    ]
+  },
+  {
+    "name": "Keystone",
+    "state": "CO",
+    "description": "Business directory for Keystone, CO",
+    "listingCount": 2,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Beaver Creek",
+    "state": "CO",
+    "description": "Business directory for Beaver Creek, CO",
+    "listingCount": 2,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Steamboat Springs",
+    "state": "CO",
+    "description": "Business directory for Steamboat Springs, CO",
+    "listingCount": 3,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Copper Mountain",
+    "state": "CO",
+    "description": "Business directory for Copper Mountain, CO",
+    "listingCount": 2,
+    "categories": [
+      "WebSite"
+    ]
+  },
+  {
+    "name": "Crested Butte",
+    "state": "CO",
+    "description": "Business directory for Crested Butte, CO",
+    "listingCount": 2,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Snowmass Village",
+    "state": "CO",
+    "description": "Business directory for Snowmass Village, CO",
+    "listingCount": 2,
+    "categories": [
+      "Organization"
+    ]
+  },
+  {
+    "name": "Dillon",
+    "state": "CO",
+    "description": "Business directory for Dillon, CO",
+    "listingCount": 1,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Georgetown",
+    "state": "CO",
+    "description": "Business directory for Georgetown, CO",
+    "listingCount": 2,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Nederland",
+    "state": "CO",
+    "description": "Business directory for Nederland, CO",
+    "listingCount": 1,
+    "categories": [
+      "WebSite"
+    ]
+  },
+  {
+    "name": "Salida",
+    "state": "CO",
+    "description": "Business directory for Salida, CO",
+    "listingCount": 1,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Glenwood Springs",
+    "state": "CO",
+    "description": "Business directory for Glenwood Springs, CO",
+    "listingCount": 1,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Leadville",
+    "state": "CO",
+    "description": "Business directory for Leadville, CO",
+    "listingCount": 1,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Pagosa Springs",
+    "state": "CO",
+    "description": "Business directory for Pagosa Springs, CO",
+    "listingCount": 1,
+    "categories": [
+      "website"
+    ]
+  },
+  {
+    "name": "Durango",
+    "state": "CO",
+    "description": "Business directory for Durango, CO",
+    "listingCount": 2,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Silverton",
+    "state": "CO",
+    "description": "Business directory for Silverton, CO",
+    "listingCount": 2,
+    "categories": [
+      "Ski Resort",
+      "WebSite"
+    ]
+  },
+  {
+    "name": "Hesperus",
+    "state": "CO",
+    "description": "Business directory for Hesperus, CO",
+    "listingCount": 1,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Granby",
+    "state": "CO",
+    "description": "Business directory for Granby, CO",
+    "listingCount": 2,
+    "categories": [
+      "website",
+      "article"
+    ]
+  },
+  {
+    "name": "Evergreen",
+    "state": "CO",
+    "description": "Business directory for Evergreen, CO",
+    "listingCount": 1,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Colorado Springs",
+    "state": "CO",
+    "description": "Business directory for Colorado Springs, CO",
+    "listingCount": 1,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Cuchara",
+    "state": "CO",
+    "description": "Business directory for Cuchara, CO",
+    "listingCount": 1,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Tabernash",
+    "state": "CO",
+    "description": "Business directory for Tabernash, CO",
+    "listingCount": 1,
+    "categories": [
+      "Ski Resort"
+    ]
+  },
+  {
+    "name": "Frisco",
+    "state": "CO",
+    "description": "Business directory for Frisco, CO",
+    "listingCount": 1,
+    "categories": [
+      "Ski Resort"
+    ]
+  }
+]

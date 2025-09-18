@@ -1,0 +1,498 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import citiesData from '../data/cities.json';
+import faqsData from '../data/faqs.json';
+
+const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) : [];
+---
+
+<MainLayout title="All Colorado Ski Resorts - Your Complete Guide">
+  <!-- Hero Section with Banner Background -->
+  <section class="relative bg-gradient-to-r from-teal-600/20 to-teal-700/20 text-white">
+    <!-- Banner Image Background -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60" style="background-image: url('/banner.jpg');"></div>
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+        <!-- Header Content -->
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          All Colorado Ski Resorts: Your Complete Guide
+        </h1>
+        <p class="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto">
+          Find your perfect Colorado ski adventure.  Compare resorts, read reviews, and plan your trip today!
+        </p>
+        
+        <!-- Search Bar -->
+        <div class="max-w-2xl mx-auto">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="searchInput"
+              placeholder="Search for businesses, services, or locations..." 
+              class="w-full px-6 py-4 pl-12 text-gray-900 border border-gray-300 rounded-lg focus:ring-4 focus:ring-blue-300 focus:border-transparent transition-all duration-200 text-lg"
+            />
+            <svg class="absolute left-4 top-4 w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 0 1 -14 0 7 7 0 0 1 14 0z"></path>
+            </svg>
+            <button 
+              id="searchButton"
+              class="absolute right-3 top-2 bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-md transition-colors font-medium"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+          </div>
+        </div>
+  </section>
+
+    <!-- Main Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Most Popular Areas Section -->
+      <section class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Most Popular Areas
+        </h2>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          Discover the top locations with the most business listings in your area
+        </p>
+        
+        <!-- City Cards Grid - 3 rows of 3 cards each -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {topCities.map((city) => (
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 transform hover:-translate-y-1">
+        <div class="text-center">
+                <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">{city.name}, {city.state}</h3>
+                <p class="text-3xl font-bold text-teal-600 mb-2">{city.listingCount}</p>
+                <p class="text-sm text-gray-600 mb-4">business listings</p>
+                <button 
+                  data-city={city.name}
+                  class="city-button w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                >
+                  View Listings
+                </button>
+        </div>
+      </div>
+          ))}
+        </div>
+        
+        <!-- View All Cities Button -->
+        <div class="text-center mb-16">
+          <a 
+            href="/cities"
+            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold text-lg rounded-lg hover:from-teal-700 hover:to-teal-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            View All Cities
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+    </div>
+  </section>
+
+      <!-- Testimonials Section -->
+      <section class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            What Our Users Say
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Real experiences from skiers and snowboarders who found their perfect Colorado adventure
+          </p>
+        </div>
+        
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format" 
+                   alt="Sarah Johnson" 
+                   class="w-12 h-12 rounded-full object-cover mr-4" />
+              <div>
+                <h4 class="font-semibold text-gray-900">Sarah Johnson</h4>
+                <div class="flex items-center">
+                  <div class="flex text-yellow-400">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  </div>
+                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "This directory helped me discover amazing ski resorts I never knew existed! The detailed information and reviews made planning my Colorado ski trip so much easier."
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&auto=format" 
+                   alt="Mike Chen" 
+                   class="w-12 h-12 rounded-full object-cover mr-4" />
+              <div>
+                <h4 class="font-semibold text-gray-900">Mike Chen</h4>
+                <div class="flex items-center">
+                  <div class="flex text-yellow-400">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  </div>
+                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "As a beginner skier, I was overwhelmed by all the options. This site broke down everything perfectly and helped me find the perfect resort for my skill level."
+            </p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face&auto=format" 
+                   alt="David Rodriguez" 
+                   class="w-12 h-12 rounded-full object-cover mr-4" />
+              <div>
+                <h4 class="font-semibold text-gray-900">David Rodriguez</h4>
+                <div class="flex items-center">
+                  <div class="flex text-yellow-400">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  </div>
+                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "The city-by-city breakdown is fantastic! I found exactly what I was looking for in Aspen and the detailed resort information saved me hours of research."
+            </p>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&auto=format" 
+                   alt="Emily Thompson" 
+                   class="w-12 h-12 rounded-full object-cover mr-4" />
+              <div>
+                <h4 class="font-semibold text-gray-900">Emily Thompson</h4>
+                <div class="flex items-center">
+                  <div class="flex text-yellow-400">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  </div>
+                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "Perfect for planning family ski trips! The comprehensive listings helped me find resorts that cater to both beginners and advanced skiers in our group."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs Section with Toggle Design -->
+      <section class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-4 max-w-4xl mx-auto">
+          {faqsData && faqsData.length > 0 ? 
+            faqsData.map((faq, index) => (
+              <div class="border border-gray-200 rounded-lg overflow-hidden">
+                <button 
+                  data-faq-index={index}
+                  class="faq-button w-full text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-6 hover:bg-gray-50 transition-colors"
+                >
+                  <h3 class="text-lg font-semibold text-gray-900">{faq.question}</h3>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div class="hidden px-6 pb-6 text-gray-600 faq-content">
+                  <p>{faq.answer}</p>
+        </div>
+      </div>
+            )) : 
+            <div class="text-center py-12">
+              <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 mb-2">No FAQs Available</h3>
+              <p class="text-gray-600">FAQs will appear here once they are generated.</p>
+            </div>
+          }
+    </div>
+  </section>
+
+  <!-- Latest Articles Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Latest Articles
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Stay updated with the latest insights, tips, and guides for your Colorado ski adventures
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Article 1 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+          <div class="aspect-w-16 aspect-h-9">
+            <img 
+              src="/Ski Resorts Blogs/best colorado ski resorts for beginners/1.png" 
+              alt="The Bunny Hill Beckons: My Top 5 Colorado Ski Resorts for First-Time Skiers"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">
+                Beginner's Guide
+              </span>
+              <span class="text-gray-500 text-sm ml-3">8 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+              The Bunny Hill Beckons: My Top 5 Colorado Ski Resorts for First-Time Skiers
+            </h3>
+            <p class="text-gray-600 mb-4">
+              I'll never forget my first time on skis. It involved a lot of flailing, a few tumbles, and an embarrassing amount of time trying to figure out how to get off the chairlift without face-planting.
+            </p>
+            <a 
+              href="/blog/1" 
+              class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors"
+            >
+              Read More
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+          <div class="aspect-w-16 aspect-h-9">
+            <img 
+              src="/Ski Resorts Blogs/family ski vacation colorado/2.png" 
+              alt="Family Fun on the Slopes: My Top 7 Colorado Ski Resorts for an Unforgettable Family Vacation"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                Family Skiing
+              </span>
+              <span class="text-gray-500 text-sm ml-3">10 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+              Family Fun on the Slopes: My Top 7 Colorado Ski Resorts for an Unforgettable Family Vacation
+            </h3>
+            <p class="text-gray-600 mb-4">
+              There's something truly magical about a family ski trip. I remember my own childhood vacations, bundled up with my siblings, racing down the mountain.
+            </p>
+            <a 
+              href="/blog/2" 
+              class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors"
+            >
+              Read More
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+          <div class="aspect-w-16 aspect-h-9">
+            <img 
+              src="/Ski Resorts Blogs/affordable ski resorts colorado/3.png" 
+              alt="Skiing on a Shoestring: My Guide to Finding Affordable Ski Resorts in Colorado"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
+                Budget Skiing
+              </span>
+              <span class="text-gray-500 text-sm ml-3">12 min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+              Skiing on a Shoestring: My Guide to Finding Affordable Ski Resorts in Colorado
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Let's be honest: a ski trip to Colorado can sometimes feel like it requires a second mortgage. Lift tickets, rentals, lessons, lodging, food – it all adds up fast!
+            </p>
+            <a 
+              href="/blog/3" 
+              class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors"
+            >
+              Read More
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- View All Articles Button -->
+      <div class="text-center mt-12">
+        <a 
+          href="/blog" 
+          class="inline-flex items-center px-8 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors"
+        >
+          View All Articles
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <script>
+    // Search functionality
+    function performSearch() {
+      const searchTerm = document.getElementById('searchInput')?.value.trim();
+      if (searchTerm) {
+        window.location.href = '/listings?search=' + encodeURIComponent(searchTerm);
+      }
+    }
+
+    // City navigation
+    function goToCity(cityName) {
+      if (cityName) {
+        const citySlug = cityName.toLowerCase().replace(/\s+/g, '-');
+        window.location.href = '/cities/' + citySlug;
+      }
+    }
+    
+    // Make functions available globally
+    window.goToCity = goToCity;
+
+    // FAQ toggle functionality
+    function toggleFAQ(index) {
+      const button = document.querySelector('[data-faq-index="' + index + '"]');
+      const content = button.parentElement.querySelector('.faq-content');
+      const icon = button.querySelector('.faq-icon');
+      
+      if (content && icon) {
+        if (content.classList.contains('hidden')) {
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        }
+      }
+    }
+    
+    // Make FAQ function available globally
+    window.toggleFAQ = toggleFAQ;
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      // Search button
+      const searchButton = document.getElementById('searchButton');
+      if (searchButton) {
+        searchButton.addEventListener('click', performSearch);
+      }
+
+      // Search input enter key
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            performSearch();
+          }
+        });
+      }
+
+      // City buttons
+      const cityButtons = document.querySelectorAll('.city-button');
+      cityButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const cityName = this.getAttribute('data-city');
+          goToCity(cityName);
+        });
+      });
+
+      // FAQ buttons
+      const faqButtons = document.querySelectorAll('.faq-button');
+      faqButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const index = this.getAttribute('data-faq-index');
+          toggleFAQ(index);
+        });
+      });
+    });
+  </script>
+</MainLayout>

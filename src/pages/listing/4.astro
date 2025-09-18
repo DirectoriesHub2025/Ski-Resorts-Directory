@@ -1,0 +1,713 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// Essential data for individual listing pages (optimized for memory)
+const pageData = {
+  themeSettings: {
+    colorScheme: {
+      primaryColor: 'teal'
+    }
+  },
+  faqData: [{"question":"How many Colorado ski resorts are listed in the directory?","answer":"The number of resorts varies slightly depending on the directory and its inclusion criteria, but generally, it includes over 20 major ski resorts and many smaller ones."},{"question":"Does the directory include information on smaller, independent resorts?","answer":"Yes, while focusing on larger resorts, many directories also include smaller, independent resorts and areas providing a comprehensive overview of Colorado's skiing options."},{"question":"What kind of information is provided for each resort?","answer":"Typically, each resort listing includes details on terrain, lift access, amenities, lodging options, contact information, trail maps, and possibly photos and videos."},{"question":"Can I filter search results by specific criteria like difficulty level or amenities?","answer":"Most online directories allow filtering by various criteria such as terrain difficulty (beginner, intermediate, expert), amenities (ski school, childcare), and location."},{"question":"How is the accuracy of the information in the directory ensured?","answer":"Reputable directories regularly update their information; however, it's always recommended to check directly with the resort for the most up-to-date details before your trip."},{"question":"Is there a way to compare different resorts side-by-side?","answer":"Some directories offer comparison tools, allowing you to compare multiple resorts based on your chosen criteria, making decision-making easier."},{"question":"Can I book lift tickets or accommodation through the directory?","answer":"Some directories offer direct booking links to resort websites or external booking platforms for lift tickets, rentals, and lodging, providing a one-stop shop for planning."},{"question":"Are there reviews or ratings for the resorts listed?","answer":"Many directories incorporate user reviews and ratings to give you an idea of other skiers' experiences at different resorts, helping in your choice."},{"question":"Is the directory available as a mobile app?","answer":"Some directories may offer mobile apps for easy access to resort information on your smartphone while planning or during your trip; check the directory's website."},{"question":"What is the best way to contact the Colorado Ski Resorts Directory for support or inquiries?","answer":"The contact information, typically an email address or phone number, should be readily available on the directory's website or within the directory itself."}]
+};
+
+// Create finalData alias for template compatibility
+const finalData = pageData;
+
+// Individual listing FAQs from uploaded data
+const parsedIndividualFAQs = [{"question":"What are the hours at Vail Ski Resort?","answer":"Please contact us for current hours."},{"question":"How can I contact Vail Ski Resort?","answer":"You can reach us at (970) 295-8744."},{"question":"Where is Vail Ski Resort located?","answer":"Vail Ski Resort is located at 1 Vail Rd, Vail, CO 81657."}];
+
+// Business hours from uploaded data
+const businessHours = {"monday":"9:00 AM - 6:00 PM","tuesday":"9:00 AM - 6:00 PM","wednesday":"9:00 AM - 6:00 PM","thursday":"9:00 AM - 6:00 PM","friday":"9:00 AM - 6:00 PM","saturday":"10:00 AM - 4:00 PM","sunday":"Closed"};
+
+// Address variables for template
+const address = '1 Vail Rd, Vail, CO 81657';
+const city = 'Vail';
+const state = 'CO';
+
+// Image variable for template
+const main_image = 'https://images.unsplash.com/photo-1674987713181-a45990ad82db?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
+// Get listing data - using dynamic field mapping
+const listing = {
+  id: 4,
+  // Dynamic fields from uploaded data
+    name: 'Vail Ski Resort',
+  description: 'Experience world-class skiing and snowboarding at Vail Ski Resort, nestled in the breathtaking Colorado Rockies.  With stunning mountain views and a vibrant village atmosphere, Vail offers unparalleled luxury and adventure for all skill levels – book your unforgettable Colorado ski vacation today! (970) 295-8744 | Vailresorts.com',
+  category: 'Ski Resort',
+  phone: '(970) 295-8744',
+  address: '1 Vail Rd, Vail, CO 81657',
+  website: 'https://vailresorts.com',
+  rating: {"rating":"Max5","value":4.1,"votes_count":64,"rating_max":5},
+  ['Main Features']: '\"World-class skiing, Extensive terrain, Luxury accommodations,  Breathtaking scenery,  Apr\\u00e8s-ski activities\"',
+  attributes: '\"World-class skiing, Extensive terrain, Luxury accommodations,  Breathtaking scenery,  Apr\\u00e8s-ski activities\"',
+  title: 'Vail Ski Resort',
+  feature_id: 'mock_3',
+  address_info_city: 'Vail',
+  address_info_zip: '81657',
+  address_info_region: 'CO',
+  address_info_country_code: 'US',
+  place_id: 'mock_3',
+  latitude: '39.616021',
+  longitude: '-104.560915',
+  place_topics: '\"Vail Ski Resort, Colorado Ski Resorts, Colorado Skiing, Vail Mountain, Ski Vacation Packages, Winter Activities Colorado, Luxury Ski Resorts\"',
+  price_level: '2',
+  people_also_search: 'similar places, popular spots, nearby locations',
+  popular_time: {"Monday":"9:00 AM - 10:00 PM","Tuesday":"9:00 AM - 10:00 PM","Wednesday":"9:00 AM - 10:00 PM","Thursday":"9:00 AM - 10:00 PM","Friday":"9:00 AM - 11:00 PM","Saturday":"10:00 AM - 11:00 PM","Sunday":"10:00 AM - 9:00 PM"},
+  contact_info: {"phone":"(970) 295-8744","website":"https://vailresorts.com","email":""},
+  faqs: '[{\"question\": \"What are the hours at Vail Ski Resort?\", \"answer\": \"Please contact us for current hours.\"}, {\"question\": \"How can I contact Vail Ski Resort?\", \"answer\": \"You can reach us at (970) 295-8744.\"}, {\"question\": \"Where is Vail Ski Resort located?\", \"answer\": \"Vail Ski Resort is located at 1 Vail Rd, Vail, CO 81657.\"}]',
+  // Common field mappings with fallbacks
+  businessName: 'Vail Ski Resort',
+  description: 'Experience world-class skiing and snowboarding at Vail Ski Resort, nestled in the breathtaking Colorado Rockies.  With stunning mountain views and a vibrant village atmosphere, Vail offers unparalleled luxury and adventure for all skill levels – book your unforgettable Colorado ski vacation today! (970) 295-8744 | Vailresorts.com',
+  city: 'Vail',
+  state: 'CO',
+  phone: '(970) 295-8744',
+  address: '1 Vail Rd, Vail, CO 81657',
+  website: 'https://vailresorts.com',
+  email: '',
+  category: 'Ski Resort'
+};
+
+// Helper function to safely get field value
+function getFieldValue(fieldName, fallback = '') {
+  return listing[fieldName] || fallback;
+}
+
+// Get display values with fallbacks
+const displayName = getFieldValue('businessName') || getFieldValue('name') || getFieldValue('title') || 'Business Listing';
+const displayDescription = getFieldValue('description') || getFieldValue('about') || getFieldValue('summary') || 'No description available';
+const displayCity = getFieldValue('city') || getFieldValue('city_name') || getFieldValue('address_info_city') || 'Unknown City';
+const displayState = getFieldValue('state') || getFieldValue('state_name') || getFieldValue('address_info_region') || 'Unknown State';
+const displayPhone = getFieldValue('phone') || getFieldValue('phonr') || getFieldValue('phone_number') || getFieldValue('contact_phone') || '';
+const displayAddress = getFieldValue('address') || getFieldValue('full_address') || getFieldValue('location') || '';
+const displayWebsite = getFieldValue('website') || getFieldValue('url') || getFieldValue('web_url') || '';
+const displayEmail = getFieldValue('email') || getFieldValue('email_address') || getFieldValue('contact_email') || '';
+const displayCategory = getFieldValue('category') || getFieldValue('type') || getFieldValue('business_type') || getFieldValue('industry') || '';
+---
+
+<MainLayout title="{displayName}">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">{displayName}</h1>
+          <p class="text-xl md:text-2xl opacity-90 mb-6">{displayDescription}</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            {displayCategory && (
+              <span class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium">
+                {displayCategory}
+              </span>
+            )}
+            <span class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium">
+              {displayCity}, {displayState}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Breadcrumb -->
+    <div class="mb-8">
+        <nav class="flex" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+              <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-teal-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-1a1 1 0 011-1h2a1 1 0 011 1v1a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                </svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <a href="/cities" class="ml-1 text-sm font-medium text-gray-700 hover:text-teal-600 md:ml-2">Cities</a>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <a href="/cities/{displayCity.toLowerCase().replace(/\s+/g, '-')}" class="ml-1 text-sm font-medium text-gray-700 hover:text-teal-600 md:ml-2">{displayCity}</a>
+              </div>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">{displayName}</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+    </div>
+    
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <!-- Business Image -->
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            {main_image ? (
+              <div class="w-full h-64 rounded-lg mb-6 overflow-hidden">
+                <img 
+                  src={main_image} 
+                  alt={displayName} 
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div class="w-full h-64 bg-gray-200 rounded-lg mb-6 flex items-center justify-center">
+                <svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+              </div>
+            )}
+            
+            <!-- Description -->
+            <div class="mb-6">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">About {displayName}</h2>
+              <p class="text-gray-700 leading-relaxed">{displayDescription}</p>
+            </div>
+
+            <!-- Rating -->
+            {(() => {
+              // Parse rating data dynamically
+              let ratingValue = 0;
+              let votesCount = 0;
+              let ratingMax = 5;
+              
+              // Try to get rating from various possible field names
+              let ratingData = listing.rating || listing.rating_data || listing.review_rating || listing.score;
+              
+              // Debug: Log the rating data to see what we're working with
+              console.log('Rating data found:', ratingData, 'Type:', typeof ratingData);
+              
+              if (ratingData) {
+                // Handle stringified JSON objects
+                if (typeof ratingData === 'string') {
+                  try {
+                    // Try to parse as JSON first
+                    const parsed = JSON.parse(ratingData);
+                    if (typeof parsed === 'object' && parsed !== null) {
+                      ratingData = parsed;
+                    } else {
+                      // If not JSON, try to parse as number
+                      const numRating = parseFloat(ratingData);
+                      if (!isNaN(numRating)) {
+                        ratingValue = numRating;
+                      }
+                    }
+                  } catch (e) {
+                    // If JSON parsing fails, try to parse as number
+                    const numRating = parseFloat(ratingData);
+                    if (!isNaN(numRating)) {
+                      ratingValue = numRating;
+                    }
+                  }
+                }
+                
+                // Now handle the rating data (could be object or number)
+                if (typeof ratingData === 'object' && ratingData !== null) {
+                  // Handle object format like {"rating": "Max5", "value": 4.7, "votes_count": 29, "rating_max": 5}
+                  ratingValue = parseFloat(ratingData.value) || parseFloat(ratingData.rating) || 0;
+                  votesCount = parseInt(ratingData.votes_count) || parseInt(ratingData.review_count) || 0;
+                  ratingMax = parseInt(ratingData.rating_max) || 5;
+                  
+                  console.log('Parsed rating:', { ratingValue, votesCount, ratingMax });
+                } else if (typeof ratingData === 'number') {
+                  ratingValue = ratingData;
+                }
+              }
+              
+              // Also try direct field access
+              if (ratingValue === 0) {
+                ratingValue = parseFloat(listing.rating_value) || parseFloat(listing.score) || parseFloat(listing.rating_score) || 0;
+                votesCount = parseInt(listing.votes_count) || parseInt(listing.review_count) || parseInt(listing.total_reviews) || 0;
+              }
+              
+              console.log('Final rating values:', { ratingValue, votesCount, ratingMax });
+              
+              // Only show rating if we have a valid value
+              if (ratingValue > 0) {
+                return (
+              <div class="border-t border-gray-200 pt-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Customer Rating</h3>
+                <div class="flex items-center">
+                  <div class="flex text-yellow-400">
+                        {Array.from({length: ratingMax}, (_, i) => (
+                          <svg class="w-6 h-6 {i < Math.floor(ratingValue) ? 'text-yellow-400' : 'text-gray-300'}" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                      </svg>
+                    ))}
+                  </div>
+                      <span class="ml-3 text-lg font-semibold text-gray-900">{ratingValue.toFixed(1)}/{ratingMax}</span>
+                      {votesCount > 0 && (
+                        <span class="ml-2 text-sm text-gray-600">({votesCount} reviews)</span>
+                      )}
+                </div>
+              </div>
+                );
+              }
+              return null;
+            })()}
+          </div>
+
+          <!-- Google Maps Integration -->
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Location</h3>
+            <div class="space-y-4">
+              <!-- Address Information -->
+              <div class="flex items-start space-x-3">
+                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+                <div class="flex-1">
+                  <p class="text-sm text-gray-500">Address</p>
+                  <p class="font-medium text-gray-900">{address || 'Address not available'}</p>
+                  <p class="text-sm text-gray-600">{city}, {state}</p>
+                </div>
+              </div>
+              
+              <!-- Google Maps Embed -->
+              <div class="w-full h-64 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBt2X2yTp_BEJUUHhROuciCfeRDTAAIElw&q=1%20Vail%20Rd%2C%20Vail%2C%20CO%2081657%2C%20Vail%2C%20CO"
+                  width="100%"
+                  height="100%"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="rounded-lg"
+                ></iframe>
+              </div>
+              
+              <!-- Action Buttons -->
+              <div class="flex justify-center space-x-3">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=1%20Vail%20Rd%2C%20Vail%2C%20CO%2081657%2C%20Vail%2C%20CO"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center px-4 py-2 bg-teal-600 text-white text-sm font-medium rounded-lg hover:bg-teal-700 transition-colors"
+                >
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                  </svg>
+                  Get Directions
+                </a>
+                <button class="inline-flex items-center px-4 py-2 bg-white border border-teal-600 text-teal-600 hover:bg-teal-50 text-sm font-medium rounded-lg transition-colors">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                  </svg>
+                  Share Business
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQs Section with Toggle Design -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
+            <div class="space-y-4">
+              {parsedIndividualFAQs && parsedIndividualFAQs.length > 0 ? (
+                <>
+                  {parsedIndividualFAQs.map((faq, index) => (
+                    <div key={index} class="border border-gray-200 rounded-lg overflow-hidden">
+                      <button 
+                        data-faq-index={index}
+                        class="faq-button w-full text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                      >
+                        <h4 class="text-lg font-semibold text-gray-900">{faq.question}</h4>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </button>
+                      <div class="hidden px-4 pb-4 text-gray-600 faq-content">
+                        <p>{faq.answer}</p>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div class="text-center py-8">
+                  <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <p class="text-gray-500">No FAQs available for this business</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <!-- Contact Information -->
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Contact Information</h3>
+            <div class="space-y-4">
+              {displayPhone && (
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-500">Phone</p>
+                    <p class="font-medium text-gray-900">{displayPhone}</p>
+                  </div>
+                </div>
+              )}
+              
+              {displayAddress && (
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-500">Address</p>
+                    <p class="font-medium text-gray-900">{displayAddress}</p>
+                  </div>
+                </div>
+              )}
+              
+              {displayWebsite && (
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-500">Website</p>
+                    <a href={displayWebsite} target="_blank" rel="noopener noreferrer" class="font-medium text-teal-600 hover:text-teal-800">{displayWebsite}</a>
+                  </div>
+                </div>
+              )}
+              
+              {displayEmail && (
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-500">Email</p>
+                    <a href={`mailto:${displayEmail}`} class="font-medium text-teal-600 hover:text-teal-800">{displayEmail}</a>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <!-- Dynamic Enrichment Fields -->
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Additional Information</h3>
+            <div class="space-y-4">
+              {(() => {
+                const enrichmentFields = Object.entries(listing).filter(([key, value]) => {
+                  // Skip if no value
+                  if (!value || value === '' || value === null || value === undefined) return false;
+                  
+                  // Skip ALL system fields - comprehensive list
+                  const systemFields = [
+                    'id', 'businessName', 'description', 'city', 'state', 'phone', 'address', 'website', 'email', 'category', 'rating', 'main_image', 'name', 'title', 'business_name', 'about', 'summary', 
+                    'location_city', 'location_state', 'province', 'telephone', 'contact_phone', 'street_address', 'full_address', 'url', 'website_url', 'contact_email', 'stars', 'review_rating', 'score', 
+                    'type', 'business_type', 'industry', 'hours', 'business_hours', 'opening_hours', 'schedule', 'operating_hours', 'popular_time',
+                    // Address fields
+                    'address_indo_address', 'address_info_city', 'address_info_region', 'address_info_country_code',
+                    // Contact fields
+                    'contact_info',
+                    // Place fields
+                    'place_topics', 'people_also_search', 'feature_id',
+                    // System attributes and data fields
+                    'attributes', 'main_features', 'feature_id',
+                    // Other system fields
+                    'originalData', 'enrichmentData', 'selected', 'imageUrl'
+                  ];
+                  if (systemFields.includes(key)) return false;
+                  
+                  // ONLY include fields that are specifically enrichment fields from upload.astro
+                  // These are the fields that were added during the enrichment process
+                  const enrichmentFieldPatterns = [
+                    'features', 'attributes', 'amenities', 'services', 'facilities',
+                    'equipment', 'specifications', 'details', 'characteristics',
+                    'capabilities', 'options', 'inclusions', 'exclusions',
+                    'requirements', 'restrictions', 'policies', 'procedures',
+                    'guidelines', 'instructions', 'notes', 'comments', 'remarks',
+                    'additional_info', 'extra_info', 'supplementary_info',
+                    'enrichment', 'custom', 'special', 'unique', 'distinctive'
+                  ];
+                  
+                  // Check if field matches enrichment patterns
+                  const keyLower = key.toLowerCase();
+                  const isEnrichmentField = enrichmentFieldPatterns.some(pattern => 
+                    keyLower.includes(pattern) || 
+                    keyLower.startsWith(pattern) || 
+                    keyLower.endsWith(pattern)
+                  );
+                  
+                  // ONLY return true if it's a genuine enrichment field
+                  return isEnrichmentField;
+                });
+                
+                if (enrichmentFields.length > 0) {
+                  return enrichmentFields.map(([key, value]) => {
+                    // Format field name for display (convert underscores to spaces and capitalize)
+                    const displayKey = key.replace(/_/g, ' ').replace(/w/g, l => l.toUpperCase());
+                    
+                    // Advanced type detection and parsing system
+                    const formatValue = (val, fieldKey) => {
+                      // Handle null/undefined
+                      if (val === null || val === undefined) return '';
+                      
+                      // Handle strings
+                      if (typeof val === 'string') {
+                        // Check if it's a JSON string
+                        if (val.startsWith('{') && val.endsWith('}')) {
+                          try {
+                            const parsed = JSON.parse(val);
+                            return formatValue(parsed, fieldKey);
+                          } catch (e) {
+                            return val;
+                          }
+                        }
+                        if (val.startsWith('[') && val.endsWith(']')) {
+                          try {
+                            const parsed = JSON.parse(val);
+                            return formatValue(parsed, fieldKey);
+                          } catch (e) {
+                            return val;
+                          }
+                        }
+                        return val;
+                      }
+                      
+                      // Handle numbers and booleans
+                      if (typeof val === 'number' || typeof val === 'boolean') {
+                        return String(val);
+                      }
+                      
+                      // Handle arrays
+                      if (Array.isArray(val)) {
+                        // Smart array parsing based on field key
+                        if (fieldKey === 'rating' || fieldKey.includes('rating')) {
+                          return val.map(item => {
+                            if (typeof item === 'object' && item !== null) {
+                              return Object.entries(item).map(([k, v]) => k + ': ' + v).join(', ');
+                            }
+                            return String(item);
+                          }).join('<br>');
+                        } else if (fieldKey === 'attributes' || fieldKey.includes('attribute')) {
+                          return val.join(', ');
+                        } else if (fieldKey === 'contact_info' || fieldKey.includes('contact')) {
+                          return val.map(item => {
+                            if (typeof item === 'object' && item !== null) {
+                              return Object.entries(item).map(([k, v]) => k + ': ' + v).join(', ');
+                            }
+                            return String(item);
+                          }).join('<br>');
+                        } else if (fieldKey === 'faqs' || fieldKey.includes('faq')) {
+                          return val.map(item => {
+                            if (typeof item === 'object' && item !== null) {
+                              return Object.entries(item).map(([k, v]) => k + ': ' + v).join(', ');
+                            }
+                            return String(item);
+                          }).join('<br>');
+                        } else {
+                          // Generic array parsing
+                          return val.map(item => {
+                            if (typeof item === 'object' && item !== null) {
+                              return Object.entries(item).map(([k, v]) => k + ': ' + v).join(', ');
+                            }
+                            return String(item);
+                          }).join('<br>');
+                        }
+                      }
+                      
+                      // Handle objects
+                      if (typeof val === 'object' && val !== null) {
+                        // Smart object parsing based on field key
+                        if (fieldKey === 'rating' || fieldKey.includes('rating')) {
+                          if (val.value && val.votes_count) {
+                            return val.value + '/5 (' + val.votes_count + ' reviews)';
+                          }
+                          return Object.entries(val).map(([k, v]) => k + ': ' + v).join('<br>');
+                        } else if (fieldKey === 'attributes' || fieldKey.includes('attribute')) {
+                          return Object.entries(val).map(([k, v]) => k + ': ' + v).join('<br>');
+                        } else if (fieldKey === 'contact_info' || fieldKey.includes('contact')) {
+                          return Object.entries(val).map(([k, v]) => k + ': ' + v).join('<br>');
+                        } else if (fieldKey === 'faqs' || fieldKey.includes('faq')) {
+                          return Object.entries(val).map(([k, v]) => k + ': ' + v).join('<br>');
+                        } else {
+                          // Generic object parsing
+                          return Object.entries(val).map(([k, v]) => k + ': ' + v).join('<br>');
+                        }
+                      }
+                      
+                      return String(val);
+                    };
+                    
+                    const formattedValue = formatValue(value, key);
+                    
+                    return (
+                      <div key={key} class="flex items-start">
+                        <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                          <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                        </div>
+                        <div class="flex-1">
+                          <p class="text-sm text-gray-500">{displayKey}</p>
+                          <p class="font-medium text-gray-900 break-words" set:html={formattedValue}></p>
+                        </div>
+                      </div>
+                    );
+                  });
+                } else {
+                  return (
+                    <div class="text-center py-8">
+                      <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      <p class="text-gray-500">No additional information available</p>
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
+
+          <!-- Business Hours -->
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Business Hours</h3>
+            <div class="space-y-2">
+              {(() => {
+                // Safely convert popular_time to string and check if it has content
+                let scheduleData = null;
+                if (listing.popular_time) {
+                  if (typeof listing.popular_time === 'string') {
+                    try {
+                      scheduleData = JSON.parse(listing.popular_time);
+                    } catch (e) {
+                      scheduleData = listing.popular_time.trim();
+                    }
+                  } else if (typeof listing.popular_time === 'object' && listing.popular_time !== null) {
+                    scheduleData = listing.popular_time;
+                  } else {
+                    scheduleData = String(listing.popular_time).trim();
+                  }
+                }
+
+                const isValidSchedule = scheduleData &&
+                  typeof scheduleData === 'object' &&
+                  !Array.isArray(scheduleData) &&
+                  Object.keys(scheduleData).some(day => 
+                    ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].includes(day)
+                  );
+
+                return isValidSchedule ? (
+                  <div class="space-y-4">
+                    <div class="flex items-center mb-4">
+                      <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-sm text-gray-500">Business Hours</p>
+                      </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                      {Object.entries(scheduleData).map(([day, hours]) => (
+                        <div class="flex justify-between items-center py-2 px-3 bg-gray-50 rounded-lg">
+                          <span class="font-medium text-gray-700">{day}</span>
+                          <span class="text-gray-900">{hours}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : scheduleData ? (
+                  <div class="space-y-3">
+                    <div class="flex items-center">
+                      <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+                        <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-sm text-gray-500">Popular Times</p>
+                        <p class="font-medium text-gray-900 break-words">{scheduleData}</p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="text-center py-8">
+                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-gray-500">Business hours not available</p>
+                    <p class="text-sm text-gray-400 mt-1">Please contact the business directly for hours</p>
+                  </div>
+                );
+              })()}
+            </div>
+            <p class="text-xs text-gray-500 mt-3">*Hours may vary, please call ahead</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // FAQ toggle functionality
+    function toggleFAQ(index) {
+      const button = document.querySelector('[data-faq-index="' + index + '"]');
+      const content = button.parentElement.querySelector('.faq-content');
+      const icon = button.querySelector('.faq-icon');
+      
+      if (content && icon) {
+        if (content.classList.contains('hidden')) {
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        }
+      }
+    }
+    
+    // Make FAQ function available globally
+    window.toggleFAQ = toggleFAQ;
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ buttons
+      const faqButtons = document.querySelectorAll('.faq-button');
+      faqButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const index = this.getAttribute('data-faq-index');
+          toggleFAQ(index);
+        });
+      });
+    });
+  </script>
+</MainLayout>
