@@ -56,7 +56,7 @@ const regularPosts = sortedPosts.filter(post => !post.featured);
                       </div>
                     </div>
                     <a 
-                      href={`/blog/${post.id}`}
+                      href={`/${post.slug}`}
                       class="text-teal-600 hover:text-teal-700 font-medium text-sm"
                     >
                       Read More →
@@ -104,7 +104,7 @@ const regularPosts = sortedPosts.filter(post => !post.featured);
                     </div>
                   </div>
                   <a 
-                    href={`/blog/${post.id}`}
+                    href={`/${post.slug}`}
                     class="text-teal-600 hover:text-teal-700 font-medium text-sm"
                   >
                     Read More →
