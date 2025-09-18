@@ -1,0 +1,196 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import blogData from '../data/blog.json';
+
+export async function getStaticPaths() {
+  return blogData.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<MainLayout title={post.title}>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Article Header -->
+    <div class="bg-white border-b border-gray-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex items-center mb-4">
+          <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">
+            {post.category}
+          </span>
+          <span class="text-gray-500 text-sm ml-3">{post.readTime}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {post.title}
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">{post.excerpt}</p>
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mr-4">
+            <span class="text-teal-600 font-semibold text-lg">
+              {post.author.split(' ').map(n => n[0]).join('')}
+            </span>
+          </div>
+          <div>
+            <p class="font-medium text-gray-900">{post.author}</p>
+            <p class="text-gray-500">{new Date(post.date).toLocaleDateString()}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Image -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <img 
+        src={post.image} 
+        alt={post.title}
+        class="w-full h-96 object-cover rounded-xl shadow-lg"
+      />
+    </div>
+
+    <!-- Article Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="prose prose-lg max-w-none">
+          <div set:html={(() => {
+            const lines = post.content.split('\n');
+            let html = '';
+            let inList = false;
+            let listType = '';
+            
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i];
+              const trimmedLine = line.trim();
+              
+              if (trimmedLine === '') {
+                if (inList) {
+                  html += `</${listType}>`;
+                  inList = false;
+                  listType = '';
+                }
+                continue;
+              }
+              
+              // Handle main headings (starts with ** and ends with **)
+              if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && trimmedLine.length > 4) {
+                if (inList) {
+                  html += `</${listType}>`;
+                  inList = false;
+                  listType = '';
+                }
+                const text = trimmedLine.slice(2, -2);
+                html += `<h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">${text}</h2>`;
+                continue;
+              }
+              
+              // Handle subheadings (starts with ** but doesn't end with **)
+              if (trimmedLine.startsWith('**') && !trimmedLine.endsWith('**')) {
+                if (inList) {
+                  html += `</${listType}>`;
+                  inList = false;
+                  listType = '';
+                }
+                const text = trimmedLine.slice(2);
+                html += `<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">${text}</h3>`;
+                continue;
+              }
+              
+              // Handle bullet points
+              if (trimmedLine.startsWith('- ')) {
+                if (!inList || listType !== 'ul') {
+                  if (inList) {
+                    html += `</${listType}>`;
+                  }
+                  html += '<ul class="list-disc list-inside mb-4">';
+                  inList = true;
+                  listType = 'ul';
+                }
+                const text = trimmedLine.slice(2);
+                html += `<li class="text-gray-700 mb-2">${text}</li>`;
+                continue;
+              }
+              
+              // Handle numbered lists
+              if (/^\d+\./.test(trimmedLine)) {
+                if (!inList || listType !== 'ol') {
+                  if (inList) {
+                    html += `</${listType}>`;
+                  }
+                  html += '<ol class="list-decimal list-inside mb-4">';
+                  inList = true;
+                  listType = 'ol';
+                }
+                const text = trimmedLine.replace(/^\d+\.\s*/, '');
+                html += `<li class="text-gray-700 mb-2">${text}</li>`;
+                continue;
+              }
+              
+              // Close any open list
+              if (inList) {
+                html += `</${listType}>`;
+                inList = false;
+                listType = '';
+              }
+              
+              // Handle bold text within paragraphs
+              let processedLine = trimmedLine;
+              processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-gray-900">$1</strong>');
+              
+              // Regular paragraphs
+              html += `<p class="text-gray-700 leading-relaxed mb-4">${processedLine}</p>`;
+            }
+            
+            // Close any remaining open list
+            if (inList) {
+              html += `</${listType}>`;
+            }
+            
+            return html;
+          })()} />
+        </div>
+
+        <!-- Related Articles -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Related Articles</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {blogData
+              .filter(relatedPost => relatedPost.id !== post.id)
+              .slice(0, 3)
+              .map((relatedPost) => (
+                <a 
+                  href={`/${relatedPost.slug}`}
+                  class="block bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors group"
+                >
+                  <div class="aspect-w-16 aspect-h-9 mb-3">
+                    <img 
+                      src={relatedPost.image} 
+                      alt={relatedPost.title}
+                      class="w-full h-32 object-cover rounded-lg"
+                    />
+                  </div>
+                  <h4 class="font-semibold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">{relatedPost.title}</h4>
+                  <p class="text-sm text-gray-600 mb-2">{relatedPost.excerpt}</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">{relatedPost.category}</span>
+                    <span class="text-xs text-gray-500">{relatedPost.readTime}</span>
+                  </div>
+                </a>
+              ))}
+          </div>
+        </div>
+
+        <!-- Back to Blog -->
+        <div class="mt-8 text-center">
+          <a 
+            href="/blog"
+            class="inline-flex items-center px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
+          >
+            ← Back to Blog
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
