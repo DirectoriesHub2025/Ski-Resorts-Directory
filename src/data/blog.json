@@ -9,7 +9,7 @@
     "date": "2025-01-15",
     "category": "Beginner's Guide",
     "readTime": "8 min read",
-    "image": "/Ski Resorts Blogs/best colorado ski resorts for beginners/1.png",
+    "image": "/blog-images/1.png",
     "featured": true
   },
   {
@@ -22,7 +22,7 @@
     "date": "2025-01-12",
     "category": "Family Skiing",
     "readTime": "10 min read",
-    "image": "/Ski Resorts Blogs/family ski vacation colorado/2.png",
+    "image": "/blog-images/2.png",
     "featured": false
   },
   {
@@ -35,7 +35,7 @@
     "date": "2025-01-10",
     "category": "Budget Skiing",
     "readTime": "12 min read",
-    "image": "/Ski Resorts Blogs/affordable ski resorts colorado/3.png",
+    "image": "/blog-images/3.png",
     "featured": true
   },
   {
@@ -48,7 +48,7 @@
     "date": "2025-01-08",
     "category": "Uncrowded Skiing",
     "readTime": "8 min read",
-    "image": "/Ski Resorts Blogs/uncrowded ski resorts colorado/4.png",
+    "image": "/blog-images/4.png",
     "featured": false
   },
   {
@@ -61,7 +61,7 @@
     "date": "2025-01-05",
     "category": "Night Skiing",
     "readTime": "7 min read",
-    "image": "/Ski Resorts Blogs/night skiing colorado/5.png",
+    "image": "/blog-images/5.png",
     "featured": false
   },
   {
@@ -74,7 +74,7 @@
     "date": "2025-01-03",
     "category": "Packing Guide",
     "readTime": "6 min read",
-    "image": "/Ski Resorts Blogs/What to Pack for Your Colorado Ski Trip/6.png",
+    "image": "/blog-images/6.png",
     "featured": true
   },
   {
@@ -87,7 +87,7 @@
     "date": "2025-01-01",
     "category": "Spring Skiing",
     "readTime": "7 min read",
-    "image": "/Ski Resorts Blogs/Skiing in the Spring The Best Colorado Resorts for Late-Season Snow/7.png",
+    "image": "/blog-images/7.png",
     "featured": false
   },
   {
@@ -100,7 +100,7 @@
     "date": "2024-12-28",
     "category": "Equipment Guide",
     "readTime": "8 min read",
-    "image": "/Ski Resorts Blogs/How to Choose the Right Ski Size for Your Height and Ability Level/8.png",
+    "image": "/blog-images/8.png",
     "featured": true
   },
   {
@@ -113,7 +113,7 @@
     "date": "2024-12-25",
     "category": "Learning Guide",
     "readTime": "9 min read",
-    "image": "/Ski Resorts Blogs/Skiing vs. Snowboarding Which is Easier to Learn in Colorado/9.png",
+    "image": "/blog-images/9.png",
     "featured": false
   },
   {
@@ -126,7 +126,7 @@
     "date": "2024-12-22",
     "category": "Pet-Friendly Travel",
     "readTime": "10 min read",
-    "image": "/Ski Resorts Blogs/Dog-Friendly Colorado Ski Towns and Where to Stay/10.png",
+    "image": "/blog-images/10.png",
     "featured": false
   }
 ]
