@@ -8,10 +8,10 @@ const cities = [{"name":"Telluride","state":"CO","description":"Business directo
 <MainLayout title="Cities">
   <div class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <div class="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-16">
+    <div class="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-12 sm:py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Browse by City</h1>
-        <p class="text-xl md:text-2xl opacity-90 mb-8">Explore businesses organized by location across Colorado Ski Resorts Directory</p>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Browse by City</h1>
+        <p class="text-base sm:text-lg md:text-xl lg:text-2xl opacity-90 mb-6 sm:mb-8">Explore businesses organized by location across Colorado Ski Resorts Directory</p>
         
         <!-- Search Bar -->
         <div class="max-w-2xl mx-auto">
@@ -20,11 +20,11 @@ const cities = [{"name":"Telluride","state":"CO","description":"Business directo
               type="text" 
               id="citySearch" 
               placeholder="Search cities..." 
-              class="w-full px-6 py-4 text-gray-900 text-lg rounded-lg shadow-lg focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 transition-all duration-200"
+              class="w-full px-4 sm:px-6 py-3 sm:py-4 text-gray-900 text-sm sm:text-base lg:text-lg rounded-lg shadow-lg focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 transition-all duration-200"
             />
             <button 
               id="citySearchBtn" 
-              class="absolute right-2 top-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg transition-colors font-medium"
+              class="absolute right-1.5 sm:right-2 top-1.5 sm:top-2 bg-teal-600 hover:bg-teal-700 text-white px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-lg transition-colors font-medium text-sm sm:text-base"
             >
               Search
             </button>
@@ -40,34 +40,34 @@ const cities = [{"name":"Telluride","state":"CO","description":"Business directo
         <p id="resultsCount" class="text-gray-600 text-lg">Showing {cities.length} cities</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
       {cities.map((city) => (
           <div class="city-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="p-6">
+            <div class="p-4 sm:p-6">
               <!-- City Icon -->
-              <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
               </div>
               
               <!-- City Information -->
-              <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">{city.name}, {city.state}</h3>
-            <p class="text-gray-600 mb-4">{city.description}</p>
-                <div class="flex items-center justify-center space-x-2">
-                  <span class="text-3xl font-bold text-teal-600">{city.listingCount}</span>
-                  <span class="text-sm text-gray-500">business listings</span>
+              <div class="text-center mb-4 sm:mb-6">
+                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">{city.name}, {city.state}</h3>
+            <p class="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">{city.description}</p>
+                <div class="flex items-center justify-center space-x-1 sm:space-x-2">
+                  <span class="text-2xl sm:text-3xl font-bold text-teal-600">{city.listingCount}</span>
+                  <span class="text-xs sm:text-sm text-gray-500">business listings</span>
           </div>
               </div>
               
               <!-- Categories -->
               {city.categories && city.categories.length > 0 && (
-                <div class="mb-6">
-                  <div class="flex flex-wrap justify-center gap-2">
+                <div class="mb-4 sm:mb-6">
+                  <div class="flex flex-wrap justify-center gap-1 sm:gap-2">
                     {city.categories.map((category) => (
-                      <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                      <span class="px-2 sm:px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
                         {category}
                       </span>
                     ))}
@@ -78,7 +78,7 @@ const cities = [{"name":"Telluride","state":"CO","description":"Business directo
               <!-- Action Button -->
             <button 
               data-city={city.name}
-              class="city-button w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg transform hover:scale-105"
+              class="city-button w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg transition-colors shadow-md hover:shadow-lg transform hover:scale-105 text-sm sm:text-base"
             >
               View Listings
             </button>
