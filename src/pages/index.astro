@@ -13,13 +13,13 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60" style="background-image: url('/banner.jpg');"></div>
     <div class="absolute inset-0 bg-black opacity-20"></div>
     
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         <div class="text-center">
         <!-- Header Content -->
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
           All Colorado Ski Resorts: Your Complete Guide
         </h1>
-        <p class="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto">
+        <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 sm:mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed">
           Find your perfect Colorado ski adventure.  Compare resorts, read reviews, and plan your trip today!
         </p>
         
@@ -30,14 +30,14 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
               type="text" 
               id="searchInput"
               placeholder="Search for businesses, services, or locations..." 
-              class="w-full px-6 py-4 pl-12 text-gray-900 border border-gray-300 rounded-lg focus:ring-4 focus:ring-blue-300 focus:border-transparent transition-all duration-200 text-lg"
+              class="w-full px-4 sm:px-6 py-3 sm:py-4 pl-10 sm:pl-12 text-gray-900 border border-gray-300 rounded-lg focus:ring-4 focus:ring-blue-300 focus:border-transparent transition-all duration-200 text-sm sm:text-base lg:text-lg"
             />
-            <svg class="absolute left-4 top-4 w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="absolute left-3 sm:left-4 top-3 sm:top-4 w-5 h-5 sm:w-6 sm:h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 0 1 -14 0 7 7 0 0 1 14 0z"></path>
             </svg>
             <button 
               id="searchButton"
-              class="absolute right-3 top-2 bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-md transition-colors font-medium"
+              class="absolute right-2 sm:right-3 top-1.5 sm:top-2 bg-teal-600 hover:bg-teal-700 text-white px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-md transition-colors font-medium text-sm sm:text-base"
             >
               Search
             </button>
@@ -59,22 +59,22 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
         </p>
         
         <!-- City Cards Grid - 3 rows of 3 cards each -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
           {topCities.map((city) => (
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 transform hover:-translate-y-1">
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:-translate-y-1">
         <div class="text-center">
-                <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
           </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">{city.name}, {city.state}</h3>
-                <p class="text-3xl font-bold text-teal-600 mb-2">{city.listingCount}</p>
-                <p class="text-sm text-gray-600 mb-4">business listings</p>
+                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{city.name}, {city.state}</h3>
+                <p class="text-2xl sm:text-3xl font-bold text-teal-600 mb-2">{city.listingCount}</p>
+                <p class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">business listings</p>
                 <button 
                   data-city={city.name}
-                  class="city-button w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  class="city-button w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg transition-colors shadow-md hover:shadow-lg text-sm sm:text-base"
                 >
                   View Listings
                 </button>
@@ -109,143 +109,143 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
         </div>
         
         <!-- Testimonials Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           <!-- Testimonial 1 -->
-          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
-            <div class="flex items-center mb-4">
+          <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-3 sm:mb-4">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format" 
                    alt="Sarah Johnson" 
-                   class="w-12 h-12 rounded-full object-cover mr-4" />
+                   class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mr-3 sm:mr-4" />
               <div>
-                <h4 class="font-semibold text-gray-900">Sarah Johnson</h4>
+                <h4 class="font-semibold text-gray-900 text-sm sm:text-base">Sarah Johnson</h4>
                 <div class="flex items-center">
                   <div class="flex text-yellow-400">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
                   </div>
-                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                  <span class="text-xs sm:text-sm text-gray-600 ml-1 sm:ml-2">5.0</span>
                 </div>
               </div>
             </div>
-            <p class="text-gray-700 italic">
+            <p class="text-gray-700 italic text-sm sm:text-base">
               "This directory helped me discover amazing ski resorts I never knew existed! The detailed information and reviews made planning my Colorado ski trip so much easier."
             </p>
           </div>
 
           <!-- Testimonial 2 -->
-          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
-            <div class="flex items-center mb-4">
+          <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-3 sm:mb-4">
               <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&auto=format" 
                    alt="Mike Chen" 
-                   class="w-12 h-12 rounded-full object-cover mr-4" />
+                   class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mr-3 sm:mr-4" />
               <div>
-                <h4 class="font-semibold text-gray-900">Mike Chen</h4>
+                <h4 class="font-semibold text-gray-900 text-sm sm:text-base">Mike Chen</h4>
                 <div class="flex items-center">
                   <div class="flex text-yellow-400">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
                   </div>
-                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                  <span class="text-xs sm:text-sm text-gray-600 ml-1 sm:ml-2">5.0</span>
                 </div>
               </div>
             </div>
-            <p class="text-gray-700 italic">
+            <p class="text-gray-700 italic text-sm sm:text-base">
               "As a beginner skier, I was overwhelmed by all the options. This site broke down everything perfectly and helped me find the perfect resort for my skill level."
             </p>
           </div>
 
           <!-- Testimonial 3 -->
-          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
-            <div class="flex items-center mb-4">
+          <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-3 sm:mb-4">
               <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face&auto=format" 
                    alt="David Rodriguez" 
-                   class="w-12 h-12 rounded-full object-cover mr-4" />
+                   class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mr-3 sm:mr-4" />
               <div>
-                <h4 class="font-semibold text-gray-900">David Rodriguez</h4>
+                <h4 class="font-semibold text-gray-900 text-sm sm:text-base">David Rodriguez</h4>
                 <div class="flex items-center">
                   <div class="flex text-yellow-400">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
                   </div>
-                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                  <span class="text-xs sm:text-sm text-gray-600 ml-1 sm:ml-2">5.0</span>
                 </div>
               </div>
             </div>
-            <p class="text-gray-700 italic">
+            <p class="text-gray-700 italic text-sm sm:text-base">
               "The city-by-city breakdown is fantastic! I found exactly what I was looking for in Aspen and the detailed resort information saved me hours of research."
             </p>
           </div>
 
           <!-- Testimonial 4 -->
-          <div class="bg-white rounded-xl shadow-lg p-6 transform hover:shadow-xl transition-all duration-300">
-            <div class="flex items-center mb-4">
+          <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 transform hover:shadow-xl transition-all duration-300">
+            <div class="flex items-center mb-3 sm:mb-4">
               <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&auto=format" 
                    alt="Emily Thompson" 
-                   class="w-12 h-12 rounded-full object-cover mr-4" />
+                   class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mr-3 sm:mr-4" />
               <div>
-                <h4 class="font-semibold text-gray-900">Emily Thompson</h4>
+                <h4 class="font-semibold text-gray-900 text-sm sm:text-base">Emily Thompson</h4>
                 <div class="flex items-center">
                   <div class="flex text-yellow-400">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
                   </div>
-                  <span class="text-sm text-gray-600 ml-2">5.0</span>
+                  <span class="text-xs sm:text-sm text-gray-600 ml-1 sm:ml-2">5.0</span>
                 </div>
               </div>
             </div>
-            <p class="text-gray-700 italic">
+            <p class="text-gray-700 italic text-sm sm:text-base">
               "Perfect for planning family ski trips! The comprehensive listings helped me find resorts that cater to both beginners and advanced skiers in our group."
             </p>
           </div>
@@ -253,23 +253,23 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
       </section>
 
       <!-- FAQs Section with Toggle Design -->
-      <section class="bg-white rounded-xl shadow-lg p-8">
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Frequently Asked Questions</h2>
-        <div class="space-y-4 max-w-4xl mx-auto">
+      <section class="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-6 sm:mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-3 sm:space-y-4 max-w-4xl mx-auto">
           {faqsData && faqsData.length > 0 ? 
             faqsData.map((faq, index) => (
               <div class="border border-gray-200 rounded-lg overflow-hidden">
                 <button 
                   data-faq-index={index}
-                  class="faq-button w-full text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-6 hover:bg-gray-50 transition-colors"
+                  class="faq-button w-full text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-4 sm:p-6 hover:bg-gray-50 transition-colors"
                 >
-                  <h3 class="text-lg font-semibold text-gray-900">{faq.question}</h3>
-                  <svg class="w-5 h-5 text-gray-500 transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h3 class="text-base sm:text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 transform transition-transform faq-icon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </button>
-                <div class="hidden px-6 pb-6 text-gray-600 faq-content">
-                  <p>{faq.answer}</p>
+                <div class="hidden px-4 sm:px-6 pb-4 sm:pb-6 text-gray-600 faq-content">
+                  <p class="text-sm sm:text-base">{faq.answer}</p>
         </div>
       </div>
             )) : 
@@ -298,35 +298,35 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
         </p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         <!-- Article 1 -->
         <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
           <div class="aspect-w-16 aspect-h-9">
             <img 
               src="/Ski Resorts Blogs/best colorado ski resorts for beginners/1.png" 
               alt="The Bunny Hill Beckons: My Top 5 Colorado Ski Resorts for First-Time Skiers"
-              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              class="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <div class="p-6">
+          <div class="p-4 sm:p-6">
             <div class="flex items-center mb-3">
-              <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">
+              <span class="bg-teal-100 text-teal-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full">
                 Beginner's Guide
               </span>
-              <span class="text-gray-500 text-sm ml-3">8 min read</span>
+              <span class="text-gray-500 text-xs sm:text-sm ml-2 sm:ml-3">8 min read</span>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors leading-tight">
               The Bunny Hill Beckons: My Top 5 Colorado Ski Resorts for First-Time Skiers
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600 mb-4 text-sm sm:text-base">
               I'll never forget my first time on skis. It involved a lot of flailing, a few tumbles, and an embarrassing amount of time trying to figure out how to get off the chairlift without face-planting.
             </p>
                     <a 
                       href="/bunny-hill-beckons-top-5-colorado-ski-resorts-first-time-skiers" 
-                      class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors"
+                      class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors text-sm sm:text-base"
                     >
               Read More
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </a>
@@ -339,28 +339,28 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
             <img 
               src="/Ski Resorts Blogs/family ski vacation colorado/2.png" 
               alt="Family Fun on the Slopes: My Top 7 Colorado Ski Resorts for an Unforgettable Family Vacation"
-              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              class="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <div class="p-6">
+          <div class="p-4 sm:p-6">
             <div class="flex items-center mb-3">
-              <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+              <span class="bg-blue-100 text-blue-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full">
                 Family Skiing
               </span>
-              <span class="text-gray-500 text-sm ml-3">10 min read</span>
+              <span class="text-gray-500 text-xs sm:text-sm ml-2 sm:ml-3">10 min read</span>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors leading-tight">
               Family Fun on the Slopes: My Top 7 Colorado Ski Resorts for an Unforgettable Family Vacation
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600 mb-4 text-sm sm:text-base">
               There's something truly magical about a family ski trip. I remember my own childhood vacations, bundled up with my siblings, racing down the mountain.
             </p>
                     <a 
                       href="/family-fun-slopes-top-7-colorado-ski-resorts-unforgettable-family-vacation" 
-                      class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors"
+                      class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors text-sm sm:text-base"
                     >
               Read More
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </a>
@@ -373,28 +373,28 @@ const topCities = citiesData && citiesData.length > 0 ? citiesData.slice(0, 9) :
             <img 
               src="/Ski Resorts Blogs/affordable ski resorts colorado/3.png" 
               alt="Skiing on a Shoestring: My Guide to Finding Affordable Ski Resorts in Colorado"
-              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              class="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <div class="p-6">
+          <div class="p-4 sm:p-6">
             <div class="flex items-center mb-3">
-              <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
+              <span class="bg-green-100 text-green-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full">
                 Budget Skiing
               </span>
-              <span class="text-gray-500 text-sm ml-3">12 min read</span>
+              <span class="text-gray-500 text-xs sm:text-sm ml-2 sm:ml-3">12 min read</span>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors leading-tight">
               Skiing on a Shoestring: My Guide to Finding Affordable Ski Resorts in Colorado
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600 mb-4 text-sm sm:text-base">
               Let's be honest: a ski trip to Colorado can sometimes feel like it requires a second mortgage. Lift tickets, rentals, lessons, lodging, food – it all adds up fast!
             </p>
                     <a 
                       href="/skiing-shoestring-guide-finding-affordable-ski-resorts-colorado" 
-                      class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors"
+                      class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium transition-colors text-sm sm:text-base"
                     >
               Read More
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </a>
