@@ -135,3 +135,56 @@ body {
 .faq-button:hover {
   background-color: rgba(249, 250, 251, 1);
 }
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  .btn-modern, .btn-primary {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing on mobile */
+  .section-padding {
+    @apply py-8 sm:py-16;
+  }
+  
+  /* Improve text readability on mobile */
+  .text-modern-heading {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  
+  .text-modern-subheading {
+    @apply text-lg sm:text-xl;
+  }
+  
+  /* Better card spacing on mobile */
+  .card-modern {
+    @apply p-4 sm:p-6;
+  }
+  
+  /* Improve form elements on mobile */
+  .input-modern {
+    @apply text-base; /* Prevent zoom on iOS */
+  }
+}
+
+/* Ensure proper viewport behavior */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Improve scrolling on mobile */
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better focus states for mobile */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+}
